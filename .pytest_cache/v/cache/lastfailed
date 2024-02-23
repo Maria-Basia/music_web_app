@@ -1,0 +1,12 @@
+{
+  "tests/test_app.py::test_get_emoji[chromium]": true,
+  "tests/test_example_routes.py::test_get_books[chromium]": true,
+  "tests/test_example_routes.py::test_get_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book[chromium]": true,
+  "tests/test_example_routes.py::test_create_book_error[chromium]": true,
+  "tests/test_example_routes.py::test_delete_book[chromium]": true,
+  "tests/test_book_repository.py::test_get_all_records": true,
+  "tests/test_book_repository.py::test_get_single_record": true,
+  "tests/test_book_repository.py::test_create_record": true,
+  "tests/test_book_repository.py::test_delete_record": true
+}

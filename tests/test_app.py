@@ -71,4 +71,42 @@ def test_get_all_artists(page, test_web_address, db_connection):
     ]) 
 
 
+"""
+Add a route GET /artists/<id> which returns
+an HTML page showing details for a single artist.
+"""
 
+def test_get_single_artist(db_connection, test_web_address, page):
+    db_connection.seed("seeds/record_store_html.sql")
+    page.goto(f"http://{test_web_address}/artists/1")
+    h1_tags = page.locator("ht-name")
+    paragraph_tags = page.locator("t-genre")
+    expect(h1_tags).to_have_text = ("Pixies")
+    expect(paragraph_tags).to_have_text = ("Rock")
+
+
+"""
+The page returned by GET /artists should contain a link for 
+each artist listed. It should link to /artists/<id>, 
+where <id> is the corresponding artists's id. 
+That page should then show information about the specific artist.
+"""
+
+def test_visit_single_artist_page(page, test_web_address, db_connection):
+    db_connection.seed("seeds/record_store_html.sql")
+    page.goto(f"http://{test_web_address}/artists")
+    page.click("text = Name: Pixies")
+    h1_tag = page.locator("h1")
+    expect(h1_tag).to_have_text("Artist name: Pixies")
+    paragraph_tag = page.locator("p")
+    expect(paragraph_tag).to_have_text("Genre: Rock")
+
+
+"""
+When we create a new album 
+we can see it reflected in the list of albums
+"""
+def test_create_new_album(page, test_web_address, db_connection):
+    db_connection.seed("seeds/record_store_html.sql")
+    page.goto(f"http://{test_web_address}/artists")
+    page.click("text = Add a new album")

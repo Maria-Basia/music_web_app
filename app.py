@@ -47,19 +47,18 @@ def post_albums():
 
 @app.route("/artists", methods = ["GET"])
 def get_artists():
-    connection = get_flask_database_connection
-    artist_repository = ArtistRepository(connection)
-    artists = artist_repository.all()
-    return render_template('/artists/all_artists.html', artists = artists)
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artists = repository.all()
+    return render_template('artists/all_artists.html', artists = artists)
 
 
-
-# @app.route("/albums", methods = ['GET'])
-# def get_albums():
-#     connection = get_flask_database_connection(app)
-#     repository = AlbumRepository(connection)
-#     album_list= repository.all()
-#     return str(album_list) 
+@app.route('/artists/<int:id>', methods=['GET'])
+def get_artist(id):
+    connection = get_flask_database_connection(app)
+    repository = ArtistRepository(connection)
+    artist = repository.find(id)
+    return render_template('artists/single_artist.html', artist = artist)
 
 
 

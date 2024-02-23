@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Book Store</title>
+    <title>Album List</title>
     <meta charset="utf-8">
   </head>
   <body>
-    <h1>New Book</h1>
-    <!-- This creates a form that will submit to POST /books -->
-    <form action="/books" method="post">
+    <h1>New Album</h1>
+    <!-- This creates a form that will submit to POST /albums -->
+    <form action="/albums" method="post">
 
       <!-- We check to see if there are any errors from a previous submission -->
       {% if errors %}
@@ -27,13 +27,13 @@
         <input type="text" name="title" id="title">
       </p>
       <p>
-        <label for="author_name">Author</label>
-        <input type="text" name="author_name" id="author_name">
+        <label for="release_year">Release year</label>
+        <input type="text" name="release_year" id="release_year">
       </p>
       <p>
         <!-- `type` is submit here, to indicate it is a button -->
         <!-- `value` is used as the button's text -->
-        <input type="submit" value="Create Book">
+        <input type="submit" value="Create Album">
       </p>
     </form>
   </body>

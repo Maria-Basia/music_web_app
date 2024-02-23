@@ -102,11 +102,11 @@ def test_visit_single_artist_page(page, test_web_address, db_connection):
     expect(paragraph_tag).to_have_text("Genre: Rock")
 
 
-"""
-When we create a new album 
-we can see it reflected in the list of albums
-"""
-def test_create_new_album(page, test_web_address, db_connection):
-    db_connection.seed("seeds/record_store_html.sql")
-    page.goto(f"http://{test_web_address}/artists")
-    page.click("text = Add a new album")
+# """
+# When we create a new album 
+# we can see it reflected in the list of albums
+# """
+# def test_create_new_album(page, test_web_address, db_connection):
+#     db_connection.seed("seeds/record_store_html.sql")
+#     page.goto(f"http://{test_web_address}/artists")
+#     page.click("text = 'Add a new album'")

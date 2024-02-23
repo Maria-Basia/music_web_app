@@ -16,7 +16,7 @@ def get_albums():
     connection = get_flask_database_connection(app)
     repository = AlbumRepository(connection)
     albums = repository.all()
-    return render_template('albums/all_albums.html', albums = albums)
+    return render_template('albums/index.html', albums = albums)
 
 
 
@@ -27,7 +27,7 @@ def get_album(id):
     album = repository.find(id)
     artist_repository = ArtistRepository(connection)
     artist = artist_repository.find(album.artist_id)
-    return render_template('albums/single_album.html', album=album, artist = artist)
+    return render_template('albums/show.html', album=album, artist = artist)
 
 
 @app.route("/albums", methods = ['POST'])
@@ -50,7 +50,7 @@ def get_artists():
     connection = get_flask_database_connection(app)
     repository = ArtistRepository(connection)
     artists = repository.all()
-    return render_template('artists/all_artists.html', artists = artists)
+    return render_template('artists/index.html', artists = artists)
 
 
 @app.route('/artists/<int:id>', methods=['GET'])
@@ -58,7 +58,7 @@ def get_artist(id):
     connection = get_flask_database_connection(app)
     repository = ArtistRepository(connection)
     artist = repository.find(id)
-    return render_template('artists/single_artist.html', artist = artist)
+    return render_template('artists/show.html', artist = artist)
 
 
 
